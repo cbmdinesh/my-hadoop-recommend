@@ -1,0 +1,26 @@
+package dataPreparation;
+import java.io.IOException;
+import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.WritableComparable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+public class DataPrepMapper extends Mapper<WritableComparable<Text>, Writable, Text, Text>
+{
+	public void map(WritableComparable<Text> key, Writable value, Context context) throws IOException, InterruptedException
+            {
+			String line=((Text)value).toString();
+			String[] items=line.split(",");
+			if(items.length!=3)
+			{
+				context.setStatus("Key value is missing at "+line);
+				return;
+			}
+			Text keyToEmit=new Text(items[1]);
+			Text valueToEmit=new Text(items[0]+","+items[2]);
+			context.write(keyToEmit,valueToEmit);
+			
+		
+            }
+
+}
