@@ -1,14 +1,19 @@
 package dataPreparation;
 import java.io.IOException;
+
 import org.apache.hadoop.io.Writable;
 import org.apache.hadoop.io.WritableComparable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
+
 public class DataPrepMapper extends Mapper<WritableComparable<Text>, Writable, Text, Text>
 {
+
+	@Override
 	public void map(WritableComparable<Text> key, Writable value, Context context) throws IOException, InterruptedException
             {
+
 			String line=((Text)value).toString();
 			String[] items=line.split(",");
 			if(items.length!=3)
