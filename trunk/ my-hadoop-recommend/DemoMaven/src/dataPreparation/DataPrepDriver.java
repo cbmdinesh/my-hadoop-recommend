@@ -1,4 +1,6 @@
 package dataPreparation;
+import java.io.File;
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
@@ -6,6 +8,7 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.util.Tool;
@@ -15,6 +18,7 @@ public class DataPrepDriver extends Configured implements Tool
 {
 	public static void main(String[] args) throws Exception 
 	  {
+
 		
 		int res = ToolRunner.run(new Configuration(), new DataPrepDriver(), args);
 
@@ -33,6 +37,7 @@ public class DataPrepDriver extends Configured implements Tool
 		Path in = new Path(args[0]);
 
 		Path out = new Path(args[1]);
+		
 
 		FileInputFormat.setInputPaths(job, in);
 

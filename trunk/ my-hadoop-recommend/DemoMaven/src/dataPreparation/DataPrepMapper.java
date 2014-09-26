@@ -1,17 +1,18 @@
 package dataPreparation;
 import java.io.IOException;
 
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Writable;
 import org.apache.hadoop.io.WritableComparable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 
-public class DataPrepMapper extends Mapper<WritableComparable<Text>, Writable, Text, Text>
+public class DataPrepMapper extends Mapper<LongWritable, Text, Text, Text>
 {
 
 	@Override
-	public void map(WritableComparable<Text> key, Writable value, Context context) throws IOException, InterruptedException
+	public void map(LongWritable key,Text value, Context context) throws IOException, InterruptedException
             {
 
 			String line=((Text)value).toString();
