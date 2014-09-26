@@ -1,4 +1,4 @@
-package canopymaker;
+package canopydata;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -28,6 +28,10 @@ public class NetflixMovie {
                               one = it1.next().one;
                               two = it2.next().one;
                       }
+                      
+                
+                      if(one!=null)
+                      {
                       if(one.equals(two)) {
                               matchCount += 1;
                               one = it1.next().one;
@@ -37,6 +41,8 @@ public class NetflixMovie {
                       else
                               two = it2.next().one;
               }
+              }
+              
               return matchCount;
       }
 
@@ -80,8 +86,11 @@ public class NetflixMovie {
               public String two;
               public Triple(String data) {
                       String[] items = data.split(",");
+                      if(items.length==2)
+                      {
                       one = new Integer(items[0]);
                       two = items[1];
+                      }
               }
       }
 

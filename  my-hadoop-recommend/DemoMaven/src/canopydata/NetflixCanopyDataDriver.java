@@ -1,4 +1,4 @@
-package canopymaker;
+package canopydata;
 
 import java.io.IOException;
 
@@ -24,7 +24,7 @@ public class NetflixCanopyDataDriver
           
     	  job.setOutputKeyClass(Text.class);
     	  job.setOutputValueClass(Text.class);
-          job.setNumReduceTasks(80);
+         // job.setNumReduceTasks(80);
     	                    
             //conf.setOutputFormat(org.apache.hadoop.mapred.TextOutputFormat.class);
 

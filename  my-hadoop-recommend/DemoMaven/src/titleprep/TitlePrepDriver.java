@@ -1,5 +1,6 @@
 package titleprep;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.apache.hadoop.conf.Configuration;
@@ -9,15 +10,27 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
 public class TitlePrepDriver {
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+		File output=new File("movietitles");
+		if(output.exists())
+		{
+		File f[]=output.listFiles();
+		for(File i:f)
+		{
+			i.delete();
+		}
+		output.delete();
+		}
+		
 		Configuration conf=new Configuration();
 		Job job=new Job(conf,"Title preparation");
 		job.setJarByClass(TitlePrepDriver.class);
 		job.setInputFormatClass(TextInputFormat.class);
-		job.setOutputFormatClass(org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat.class);
+		job.setOutputFormatClass(TextOutputFormat.class);
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(Text.class);
 		job.setMapperClass(TitleDataPrefer.class);

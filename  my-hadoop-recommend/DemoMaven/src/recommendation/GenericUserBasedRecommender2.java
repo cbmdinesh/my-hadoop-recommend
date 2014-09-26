@@ -1,3 +1,4 @@
+package recommendation;
 
 import java.io.*;
 import java.util.*;
@@ -17,7 +18,7 @@ public class GenericUserBasedRecommender2 {
  
   public static void main(String[] args) throws Exception {
       // Create a data source from the CSV file
-      File userPreferencesFile = new File("src/ratings.csv");
+      File userPreferencesFile = new File("input/ratings.csv");
       DataModel dataModel = new  FileDataModel(userPreferencesFile);
       
       UserSimilarity userSimilarity = new PearsonCorrelationSimilarity(dataModel);
