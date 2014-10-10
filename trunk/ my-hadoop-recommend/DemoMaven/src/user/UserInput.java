@@ -23,14 +23,16 @@ import java.util.Scanner;
  */
 public class UserInput
 {
-public static void main(String[] args) throws IOException
+public static String main(String args) throws IOException
 {
 String arg="useridmovie/part-r-00000";
+String output="";
 Scanner	 s=new Scanner(System.in);	
 Map<String,String> rate=new HashMap<String,String>();
 
 System.out.println("Enter user Id");
-long id=s.nextLong();
+//long id=s.nextLong();
+long id=Long.parseLong(args);
 File file=new File(arg);
 try {
 	String line;
@@ -51,22 +53,21 @@ try {
 			}
 		}
 		}
-	printMovieTitles(rate);
+	output=printMovieTitles(rate);
 	
 }
 catch (FileNotFoundException e) {
 	e.printStackTrace();
 }
-
-
-
-	}
+	
+return output;
+}
 
 /**
  * @param rate
  * @throws IOException 
  */
-private static void printMovieTitles(Map<String, String> rate) throws IOException 
+private static String printMovieTitles(Map<String, String> rate) throws IOException 
 {
 	Iterator<String> movieIdIterator=rate.keySet().iterator();
 	StringBuilder builder=new StringBuilder();
@@ -92,8 +93,8 @@ private static void printMovieTitles(Map<String, String> rate) throws IOExceptio
 		}
 		
 	}
-	System.out.println(builder.toString());
-	
+	//System.out.println(builder.toString());
+	return builder.toString();
 }
 
 }

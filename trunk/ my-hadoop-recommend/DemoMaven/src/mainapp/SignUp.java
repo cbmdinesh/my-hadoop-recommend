@@ -86,7 +86,7 @@ public class SignUp {
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 503, 434);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblUserid = new JLabel("UserID");
@@ -210,6 +210,7 @@ public class SignUp {
 			bw.write(Uid+","+gender+",");
 			bw.write("\n");
 			bw.close();
+			JOptionPane.showMessageDialog(frame, "Successfully signed up!!!!!!!!!");
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(frame, "Make sure that input folder contains users.csv file", "File Not Found",JOptionPane.ERROR_MESSAGE);
