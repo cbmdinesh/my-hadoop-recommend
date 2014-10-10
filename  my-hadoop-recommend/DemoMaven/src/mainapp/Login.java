@@ -14,9 +14,13 @@ import java.awt.Label;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Properties;
+
 import javax.swing.JLabel;
 
 /**
@@ -29,6 +33,7 @@ public class Login {
 	private JFrame frame;
 	private JTextField textField;
 	private final JTextField textField_1 = new JTextField();
+	File file = new File("filepath.properties");
 
 	/**
 	 * Launch the application.
@@ -76,6 +81,10 @@ public class Login {
 				try {
 					String uid=textField.getText();
 					String pass=textField_1.getText();
+					FileInputStream inputStream = new FileInputStream(file);
+					Properties properties=new Properties();
+						properties.load(inputStream);
+						String fileName=properties.getProperty("userDetails");
 					BufferedReader br=new BufferedReader(new FileReader("input/users.csv"));
 					String line="";
 					boolean userflag=false;
@@ -92,11 +101,16 @@ public class Login {
 				if(userflag==true)
 				{
 					System.out.println("Valid user");
+					JOptionPane.showMessageDialog(frame, "WelCome", "Login Succeed",JOptionPane.INFORMATION_MESSAGE);
+					String[] args={uid};
+					new RateMovies().main(args);
+					frame.hide();
 				}
 				
 				else
 				{
 					System.out.println("InValid user");
+					JOptionPane.showMessageDialog(frame, "UserName or password must be wrong!!!!!!", "Authentication failed",JOptionPane.ERROR_MESSAGE);
 				}
 				
 				} catch (IOException e) {
@@ -110,7 +124,7 @@ public class Login {
 		frame.getContentPane().add(btnNewButton);
 		
 		Label label = new Label("User Id");
-		label.setBounds(97, 81, 68, 21);
+		label.setBounds(95, 81, 68, 21);
 		frame.getContentPane().add(label);
 		
 		JLabel lblPassword = new JLabel("Password");
