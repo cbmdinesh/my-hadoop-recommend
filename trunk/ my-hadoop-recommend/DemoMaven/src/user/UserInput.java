@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Scanner;
 
 
@@ -23,9 +24,25 @@ import java.util.Scanner;
  */
 public class UserInput
 {
+	static File file = new File("filepath.properties");
+	static String movieTitles="";
 public static String main(String args) throws IOException
 {
-String arg="useridmovie/part-r-00000";
+	String arg="";
+	try{
+		
+		Properties properties=new Properties();
+		FileInputStream inputStream = new FileInputStream(file);
+		properties.load(inputStream);
+		arg=properties.getProperty("clusterOutput");
+		movieTitles=properties.getProperty("titleOutput");
+		
+	}
+	catch(Exception e)
+	{
+		
+	}
+	//String arg="";
 String output="";
 Scanner	 s=new Scanner(System.in);	
 Map<String,String> rate=new HashMap<String,String>();
@@ -73,7 +90,8 @@ private static String printMovieTitles(Map<String, String> rate) throws IOExcept
 	StringBuilder builder=new StringBuilder();
 	while(movieIdIterator.hasNext())
 	{
-		BufferedReader in=new BufferedReader(new FileReader("movietitles/part-r-00000"));
+		
+		BufferedReader in=new BufferedReader(new FileReader(movieTitles));
 		String line="";
 		String movieId=movieIdIterator.next();
 		while((line=in.readLine())!=null)
