@@ -40,7 +40,7 @@ public class SignUp {
 	private JLabel lblGender;
 	private JTextField textField_2;
 	private JLabel lblNewLabel;
-	private JButton btnNewButton;
+	private JButton Signup;
 	private JRadioButton rdbtnNewRadioButton;
 	private JRadioButton rdbtnNewRadioButton_1;
 	private JTextField textField_1;
@@ -92,7 +92,7 @@ public class SignUp {
 		JLabel lblUserid = new JLabel("UserID");
 		lblUserid.setBounds(67, 49, 70, 15);
 		frame.getContentPane().add(lblUserid);
-		btnNewButton = new JButton("New button");
+		Signup = new JButton("Sign Up");
 		textField = new JTextField();
 		textField.setEditable(false);
 		textField.setBounds(212, 43, 114, 21);
@@ -112,8 +112,8 @@ public class SignUp {
 		lblNewLabel = new JLabel("Age");
 		lblNewLabel.setBounds(67, 148, 81, 15);
 		frame.getContentPane().add(lblNewLabel);
-		btnNewButton.setBounds(235, 352, 114, 21);
-		frame.getContentPane().add(btnNewButton);
+		Signup.setBounds(235, 352, 114, 21);
+		frame.getContentPane().add(Signup);
 		
 		rdbtnNewRadioButton = new JRadioButton("Male");
 		rdbtnNewRadioButton.setBounds(212, 91, 149, 23);
@@ -179,7 +179,7 @@ public class SignUp {
 		}
 		
 		final String usersfile=properties.getProperty("userDetails");
-		btnNewButton.addActionListener(new ActionListener() {
+		Signup.addActionListener(new ActionListener() {
 			
 			
 			
@@ -211,6 +211,7 @@ public class SignUp {
 			bw.write("\n");
 			bw.close();
 			JOptionPane.showMessageDialog(frame, "Successfully signed up!!!!!!!!!");
+			frame.hide();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(frame, "Make sure that input folder contains users.csv file", "File Not Found",JOptionPane.ERROR_MESSAGE);

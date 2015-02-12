@@ -286,7 +286,9 @@ public class RateMovies {
 				try {
 					String args[]={};
 					new ViewRatedMovies().main(args);
-				} catch (IOException e) {
+				} 
+			
+				catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}

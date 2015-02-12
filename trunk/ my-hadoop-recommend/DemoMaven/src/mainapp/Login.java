@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import javax.swing.JLabel;
+import java.awt.Font;
 
 /**
  * @author Dinesh
@@ -38,7 +39,7 @@ public class Login {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -81,6 +82,12 @@ public class Login {
 				try {
 					String uid=textField.getText();
 					String pass=textField_1.getText();
+					if(uid.equals("admin")&&pass.equals("admin"))
+					{
+						AddMovieDetails.main();
+					}
+					else
+					{
 					FileInputStream inputStream = new FileInputStream(file);
 					Properties properties=new Properties();
 						properties.load(inputStream);
@@ -113,7 +120,8 @@ public class Login {
 					JOptionPane.showMessageDialog(frame, "UserName or password must be wrong!!!!!!", "Authentication failed",JOptionPane.ERROR_MESSAGE);
 				}
 				
-				} catch (IOException e) {
+				} 
+				}catch (IOException e) {
 				JOptionPane.showMessageDialog(frame, "Make sure that input folder contains users.csv file", "File Not Found",JOptionPane.ERROR_MESSAGE);
 				e.printStackTrace();
 				}
@@ -124,10 +132,12 @@ public class Login {
 		frame.getContentPane().add(btnNewButton);
 		
 		Label label = new Label("User Id");
+		label.setFont(new Font("DialogInput", Font.BOLD, 13));
 		label.setBounds(95, 81, 68, 21);
 		frame.getContentPane().add(label);
 		
 		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setFont(new Font("Droid Sans", Font.BOLD, 13));
 		lblPassword.setBounds(95, 120, 70, 15);
 		frame.getContentPane().add(lblPassword);
 		
@@ -141,5 +151,10 @@ public class Login {
 		});
 		btnSignUp.setBounds(307, 185, 91, 25);
 		frame.getContentPane().add(btnSignUp);
+		
+		JLabel lblNewLabel = new JLabel("User Login");
+		lblNewLabel.setFont(new Font("DejaVu Serif Condensed", Font.BOLD, 15));
+		lblNewLabel.setBounds(206, 24, 151, 15);
+		frame.getContentPane().add(lblNewLabel);
 	}
 }

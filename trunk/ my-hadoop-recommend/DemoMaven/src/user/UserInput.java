@@ -3,6 +3,7 @@
  */
 package user;
 
+import java.awt.Component;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -15,6 +16,9 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Scanner;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 
 
@@ -74,7 +78,8 @@ try {
 	
 }
 catch (FileNotFoundException e) {
-	e.printStackTrace();
+	// TODO Auto-generated catch block
+	JOptionPane.showMessageDialog(new JFrame(),"Please do Data preprocessing");
 }
 	
 return output;
