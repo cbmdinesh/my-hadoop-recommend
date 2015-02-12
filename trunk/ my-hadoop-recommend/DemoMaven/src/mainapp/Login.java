@@ -23,6 +23,7 @@ import java.util.Properties;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.JPasswordField;
 
 /**
  * @author Dinesh
@@ -33,7 +34,7 @@ public class Login {
 
 	private JFrame frame;
 	private JTextField textField;
-	private final JTextField textField_1 = new JTextField();
+	private final JTextField textField_1 = new  JPasswordField();
 	File file = new File("filepath.properties");
 
 	/**

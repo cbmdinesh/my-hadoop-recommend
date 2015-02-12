@@ -40,7 +40,7 @@ public class Menu extends JFrame {
 		JButton btnAdmin = new JButton("Admin");
 		btnAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Login.main();
+				HomePage.main();
 			}
 		});
 		btnAdmin.setBounds(173, 60, 117, 25);
