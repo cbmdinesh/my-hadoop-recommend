@@ -11,6 +11,9 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+import recommendation.CopyOfGenericUserBasedRecommender2;
+import user.UserInput;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
@@ -27,6 +30,9 @@ import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import java.awt.Font;
 import java.awt.Color;
+
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 /**
  * @author Dinesh
@@ -80,7 +86,7 @@ public class RateMovies {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 910, 442);
+		frame.setBounds(100, 100, 958, 559);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		HashSet<String> generes=new HashSet<String>();
@@ -298,8 +304,32 @@ public class RateMovies {
 				
 			}
 		});
-		btnNewButton_2.setBounds(478, 198, 270, 24);
+		btnNewButton_2.setBounds(478, 131, 270, 24);
 		frame.getContentPane().add(btnNewButton_2);
+		
+	
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(478, 316, 430, 203);
+		frame.getContentPane().add(scrollPane);
+		
+		final JTextArea textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
+		
+		JButton btnClickHereTo = new JButton("Click here to view Recommented Items");
+		btnClickHereTo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+				StringBuilder sb=CopyOfGenericUserBasedRecommender2.main(userId);
+				textArea.setText(sb.toString());
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		btnClickHereTo.setBounds(478, 229, 305, 25);
+		frame.getContentPane().add(btnClickHereTo);
 	
 	}
 }

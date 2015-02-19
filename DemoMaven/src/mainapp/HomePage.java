@@ -22,6 +22,9 @@ import java.io.IOException;
 import java.util.Properties;
 
 import javax.swing.JProgressBar;
+
+import titleprep.TitlePrepDriver;
+
 import java.awt.Color;
 import java.awt.Font;
 
@@ -71,7 +74,7 @@ public class HomePage {
 		
 		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 693, 496);
+		frame.setBounds(100, 100, 787, 554);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -87,7 +90,7 @@ public class HomePage {
 				}
 			}
 		});
-		btnNewButton.setBounds(280, 163, 271, 25);
+		btnNewButton.setBounds(280, 195, 271, 25);
 		frame.getContentPane().add(btnNewButton);
 		
 		JLabel lblAdminHome = new JLabel("Admin Home");
@@ -102,14 +105,14 @@ public class HomePage {
 			public void actionPerformed(ActionEvent arg0) {
 				String args[]=null;
 				try {
-					new DataPrepDriver().main(args);
+					TitlePrepDriver.main();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 				
 			}
 		});
-		btnNewButton_1.setBounds(280, 332, 275, 25);
+		btnNewButton_1.setBounds(276, 89, 275, 25);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Data Clustering");
@@ -119,7 +122,7 @@ public class HomePage {
 				
 			}
 		});
-		btnNewButton_2.setBounds(276, 403, 271, 25);
+		btnNewButton_2.setBounds(280, 403, 271, 25);
 		frame.getContentPane().add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("View PreProcessed Data");
@@ -128,7 +131,16 @@ public class HomePage {
 				Displaydetails.main();
 			}
 		});
-		btnNewButton_3.setBounds(280, 243, 275, 25);
+		btnNewButton_3.setBounds(280, 257, 275, 25);
 		frame.getContentPane().add(btnNewButton_3);
+		
+		JButton btnNewButton_4 = new JButton("Click here to view title");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				DisplayTitles.main();
+			}
+		});
+		btnNewButton_4.setBounds(280, 142, 275, 25);
+		frame.getContentPane().add(btnNewButton_4);
 	}
 }

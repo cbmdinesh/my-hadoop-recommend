@@ -18,7 +18,7 @@ public class TitlePrepDriver
 {
 	static File file=new File("filepath.properties");
 	
-	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException 
+	public static void main() throws IOException, ClassNotFoundException, InterruptedException 
 	{
 		FileInputStream inputStream=new FileInputStream(file);
 		Properties properties=new Properties();
@@ -48,7 +48,11 @@ public class TitlePrepDriver
 		job.setReducerClass(org.apache.hadoop.mapreduce.Reducer.class);
 		FileInputFormat.addInputPath(job, new Path(titleInput));
 		FileOutputFormat.setOutputPath(job, new Path(TitleOutput));
-		System.exit(job.waitForCompletion(true)?0:1);
+		if(job.waitForCompletion(true))
+		{
+			System.out.println("Title Prepared successfully");
+		}
+		//System.exit(job.waitForCompletion(true)?0:1);
 	}
 
 }
