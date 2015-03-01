@@ -6,6 +6,8 @@ package useridmovieid;
 import java.io.File;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
@@ -22,7 +24,7 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
  *
  */
 public class UserIdMovieIdPrepDriver {
-	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+	public static void main(String args) throws IOException, ClassNotFoundException, InterruptedException {
 String outputfolder="useridmovie";
 File output=new File(outputfolder);
 if(output.exists())
@@ -44,6 +46,10 @@ job.setMapperClass(UserIdMovieIdMapper.class);
 job.setReducerClass(UserIdMovieIdReducer.class);
 FileInputFormat.addInputPath(job,new Path("input/ratings.csv"));
 FileOutputFormat.setOutputPath(job,new Path(outputfolder));
-System.exit(job.waitForCompletion(true)?0:1);
+if(job.waitForCompletion(true))
+{
+	JOptionPane.showMessageDialog(null, "Data Clustered Successfully");
+}
+//System.exit(job.waitForCompletion(true)?0:1);
 	}
 }

@@ -24,6 +24,7 @@ import java.util.Properties;
 import javax.swing.JProgressBar;
 
 import titleprep.TitlePrepDriver;
+import useridmovieid.UserIdMovieIdPrepDriver;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -119,7 +120,7 @@ public class HomePage {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				
+				clusteringPerformed(arg0);
 			}
 		});
 		btnNewButton_2.setBounds(280, 403, 271, 25);
@@ -142,5 +143,21 @@ public class HomePage {
 		});
 		btnNewButton_4.setBounds(280, 142, 275, 25);
 		frame.getContentPane().add(btnNewButton_4);
+	}
+
+	protected void clusteringPerformed(ActionEvent arg0) {
+		try {
+			UserIdMovieIdPrepDriver.main("start");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

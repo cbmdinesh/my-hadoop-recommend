@@ -3,6 +3,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
 
+import javax.swing.JOptionPane;
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
@@ -43,7 +45,7 @@ public class DataPrepDriver extends Configured implements Tool
 		
 		int res = ToolRunner.run(new Configuration(), new DataPrepDriver(), args);
 
-		System.exit(res);
+	//	System.exit(res);
 
 	  }
 	
@@ -74,7 +76,7 @@ public class DataPrepDriver extends Configured implements Tool
 
 		job.setMapperClass(DataPrepMapper.class);
 
-		job.setCombinerClass(DataPrepReducer.class);
+		job.setReducerClass(DataPrepReducer.class);
 
 		job.setInputFormatClass(TextInputFormat.class); 
 
@@ -84,7 +86,10 @@ public class DataPrepDriver extends Configured implements Tool
 
 		job.setOutputValueClass(Text.class);
 	
-		System.exit(job.waitForCompletion(true)?0:1);
+		if(job.waitForCompletion(true))
+		{
+			JOptionPane.showMessageDialog(null, "Data preprocessed");
+		}
 
 		return 0;
 

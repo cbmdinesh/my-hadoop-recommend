@@ -142,15 +142,17 @@ public class AddMovieDetails extends JFrame {
 					String Year=textField_1.getText();
 					StringBuffer Genere = new StringBuffer();
 					if(chckbxNewCheckBox.isSelected())
-											Genere.append("Drama|");
+											Genere.append("Action|");
 					
 					if(chckbxNewCheckBox_1.isSelected())
-									Genere.append("Action|");
+									Genere.append("Thriller|");
 						
 					
 					if(chckbxNewCheckBox_2.isSelected())
 						Genere.append("Comedy|");
 						
+					if(chckbxNewCheckBox_2.isSelected())
+						Genere.append("Drama|");
 					
 				BufferedWriter bw;
 				try {
